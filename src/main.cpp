@@ -1,6 +1,7 @@
 #include <iostream>
+#include "parse_args.h"
 
 int main(int argc, char** argv)
 {
-    std::cout << "Test" << std::endl;
+   parsed_args args = parse_args(argc, argv);
 }
