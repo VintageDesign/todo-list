@@ -1,6 +1,8 @@
 add_library(todo_lib)
 
-target_sources(todo_lib PUBLIC parse_args.cpp)
+target_sources(todo_lib
+        PUBLIC parse_args.cpp
+               todo_list.cpp)
 
 add_executable(todo)
 

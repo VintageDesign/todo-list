@@ -1,14 +1,16 @@
-//
-// Created by riley on 7/12/22.
-//
+#pragma once
 
-#ifndef TODO_TODO_LIST_H
-#define TODO_TODO_LIST_H
-
+#include <vector>
+#include <string>
 
 class todo_list {
+public:
+    todo_list();
+    explicit todo_list(std::vector<std::string> list);
+    ~todo_list();
+
+private:
+    std::vector<std::string> todo_items;
 
 };
 
-
-#endif //TODO_TODO_LIST_H

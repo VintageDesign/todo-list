@@ -2,6 +2,7 @@
 #define TODO_PARSE_ARGS_H
 
 #include <cstdint>
+#include <string>
 
 struct parsed_args
 {
@@ -10,7 +11,7 @@ struct parsed_args
     bool remove_item = false;
     std::uint8_t item_index = 0;
 
-    bool read_stdin = false;
+    std::string read_todo;
 };
 
 parsed_args parse_args(int argc, char ** argv);
