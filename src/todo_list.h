@@ -5,9 +5,13 @@
 
 class todo_list {
 public:
-    todo_list(std::string save_file);
+    explicit todo_list(std::string save_file);
     explicit todo_list(std::string save_file, std::vector<std::string> list);
     ~todo_list();
+
+    void add_item(std::string item);
+    std::string list_items(void);
+
 
 
 

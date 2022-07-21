@@ -30,7 +30,8 @@ bool todo_list::read_file(void) {
 
     if(file_handle.is_open())
     {
-        for(std::string input; file_handle.getline(reinterpret_cast<char *>(&input), 80, '\n');)
+        std::string input;
+        for(; file_handle.getline(reinterpret_cast<char *>(&input), 80, '\n');)
         {
             this->todo_items.push_back(input);
         }
@@ -43,6 +44,29 @@ bool todo_list::read_file(void) {
     }
     return retval;
 }
+
+void todo_list::add_item(std::string item)
+{
+    this->todo_items.push_back(item);
+}
+
+std::string todo_list::list_items(void)
+{
+    std::string output;
+    uint8_t count = 0;
+    for(string item: this->todo_items)
+    {
+        count++;
+        output += std::string(reinterpret_cast<const char *>(count)) + ". " + item + "\n";
+    }
+
+    return output;
+}
+
+
+
+
+
 
 
 
