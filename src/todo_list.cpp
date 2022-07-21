@@ -14,7 +14,20 @@ save_file(std::move(save_file))
     this->read_file();
 }
 
-todo_list::~todo_list() = default;
+todo_list::~todo_list()
+{
+    ofstream file_handle;
+    file_handle.open(this->save_file);
+    if(file_handle.is_open())
+    {
+        for(const std::string& item: this->todo_items)
+        {
+            file_handle << item << "\n";
+        }
+        file_handle.close();
+    }
+
+};
 
 todo_list::todo_list(std::string save_file, vector<string> list):
 save_file(std::move(save_file)),
@@ -28,10 +41,11 @@ bool todo_list::read_file(void) {
     ifstream file_handle;
     file_handle.open(this->save_file);
 
+    std::string input;
+
     if(file_handle.is_open())
     {
-        std::string input;
-        for(; file_handle.getline(reinterpret_cast<char *>(&input), 80, '\n');)
+        for(; getline(file_handle, input);)
         {
             this->todo_items.push_back(input);
         }
